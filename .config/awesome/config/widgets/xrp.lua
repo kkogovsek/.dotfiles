@@ -1,0 +1,6 @@
+--  tonumber(string.match(body, '"last": "(%d*.%d*)"')) 
+-- api: https://www.bitstamp.net/api/v2/ticker/xrpusd/
+-- local http=require'socket.http'
+-- body,c,l,h = http.request('http://w3.impa.br/~diego/software/luasocket/http.html')
+-- print('status line',l)
+-- print('body',body)
