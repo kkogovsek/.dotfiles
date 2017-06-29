@@ -6,7 +6,7 @@ LANG=en_US.utf8
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="illizian"
-ZSH_THEME="agnoster"
+ZSH_THEME="lambda"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,7 +92,7 @@ function swap()
 	mv $TMPFILE "$2"
 }
 
-archey
+# archey
 
 
 export NVM_DIR="/home/klemen/.nvm"
@@ -130,4 +130,6 @@ export NVM_DIR="/home/klemen/.nvm"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 alias config='/usr/bin/git --git-dir=/home/klemen/.cfg/ --work-tree=/home/klemen'
-xset r rate 150 35 
+xset r rate 150 30 
+
+sh ./.config/randomness/welcome.sh
