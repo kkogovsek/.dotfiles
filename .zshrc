@@ -130,3 +130,4 @@ export NVM_DIR="/home/klemen/.nvm"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 alias config='/usr/bin/git --git-dir=/home/klemen/.cfg/ --work-tree=/home/klemen'
+xset r rate 150 35 

@@ -1,4 +1,4 @@
-" Plugged plugins
+" Plugged plugins call plug#begin('~/.local/share/nvim/plugged')
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'vim-scripts/L9'
