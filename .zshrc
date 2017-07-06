@@ -123,7 +123,7 @@ export NVM_DIR="/home/klemen/.nvm"
 
 
  alias whysoslow='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head'
- alias fresh='clear && archey'
+ alias fresh='clear && sh .config/randomness/welcome.sh'
  
  export TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -132,4 +132,4 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 alias config='/usr/bin/git --git-dir=/home/klemen/.cfg/ --work-tree=/home/klemen'
 xset r rate 150 30 
 
-sh ./.config/randomness/welcome.sh
+sh $HOME/.config/randomness/welcome.sh

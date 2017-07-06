@@ -55,7 +55,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint']
 
 " Aurline
 let g:airline#extensions#tabline#enabled = 1
@@ -65,7 +64,6 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 " ESLINT
-
 function! FindConfig(prefix, what, where)
     let cfg = findfile(a:what, escape(a:where, ' ') . ';')
     return cfg !=# '' ? ' ' . a:prefix . ' ' . shellescape(cfg) : ''
@@ -75,11 +73,16 @@ autocmd FileType javascript let b:syntastic_javascript_jscs_args =
     \ get(g:, 'syntastic_javascript_jscs_args', '') .
     \ FindConfig('-c', '.eslintrc', expand('<afile>:p:h', 1))
 
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+"let g:syntastic_javascript_eslint_exe='node_modules/.bin/eslint'
+
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " Javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
+let g:syntastic_javascript_checkers = ['eslint']
 
 set tabstop=2
 set shiftwidth=2
@@ -100,7 +103,8 @@ set wildignore+=*/node_modules/*,*/coverage/*,*/bower_components/*,*.so,*.swp,*.
 
 " Remap leader to ','
 let mapleader = ","
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
+tnoremap <C-z> <C-\><C-n>
 
 " REACT
 let g:jsx_ext_required = 0

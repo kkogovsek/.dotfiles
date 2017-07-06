@@ -26,8 +26,6 @@ Spawner.spawn = function (command, class, tag, test)
 end
 
 Spawner.init = function() 
-	Spawner.spawn("google-chrome-stable", "Chrome", screen[1].tags[1], "class")
-	Spawner.spawn("slack", "Slack", screen[1].tags[8], "class")
 	awful.util.spawn('nm-applet')
 	awful.util.spawn('cbatticon')
 end;
