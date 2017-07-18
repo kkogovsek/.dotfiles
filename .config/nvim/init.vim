@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'mxw/vim-jsx'
 Plug 'alvan/vim-closetag'
+Plug 'heavenshell/vim-jsdoc'
 
 call plug#end()
 
@@ -104,10 +105,15 @@ set wildignore+=*/node_modules/*,*/coverage/*,*/bower_components/*,*.so,*.swp,*.
 " Remap leader to ','
 let mapleader = ","
 " tnoremap <Esc> <C-\><C-n>
-tnoremap <C-z> <C-\><C-n>
+tnoremap <C-x> <C-\><C-n>
 
 " REACT
 let g:jsx_ext_required = 0
 
 " Close tags
 let g:closetag_filenames = "*.html,*.js"
+
+"JSDOC
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+let g:jsdoc_enable_es6 = 1
