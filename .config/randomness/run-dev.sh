@@ -31,3 +31,5 @@ echo "Nope FU"
 tput sgr0
 sleep 2
 clear
+# PURE Magic kids
+[[ $BASH_SOURCE =~ (.*\/).*..* ]] && source ${BASH_REMATCH[1]}welcome.sh
