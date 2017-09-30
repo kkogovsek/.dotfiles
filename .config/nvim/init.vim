@@ -23,6 +23,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'mxw/vim-jsx'
 Plug 'alvan/vim-closetag'
 Plug 'heavenshell/vim-jsdoc'
+Plug 'vim-scripts/taglist.vim'
+Plug 'phb1/gtd.vim'
 
 call plug#end()
 
@@ -96,6 +98,9 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
+nmap <silent> <A-h> gT<CR>
+nmap <silent> <A-l> gt<CR>
+
 " Ruler
 execute "set colorcolumn=" . join(range(81,81), ',')
 
@@ -117,3 +122,45 @@ let g:closetag_filenames = "*.html,*.js"
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
 let g:jsdoc_enable_es6 = 1
+
+function! MakeSession()
+  let b:sessiondir = $HOME . "/.vim_sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  exe "mksession! " . b:filename
+endfunction
+
+" Updates a session, BUT ONLY IF IT ALREADY EXISTS
+function! UpdateSession()
+    let b:sessiondir = $HOME . "/.vim_sessions" . getcwd()
+    let b:sessionfile = b:sessiondir . "/session.vim"
+    if (filereadable(b:sessionfile))
+      exe "mksession! " . b:sessionfile
+    endif
+endfunction
+
+" Loads a session if it exists
+function! LoadSession()
+  if (len(argv()) == 0)
+    let b:sessiondir = $HOME . "/.vim_sessions" . getcwd()
+    let b:sessionfile = b:sessiondir . "/session.vim"
+    if (filereadable(b:sessionfile))
+      exe 'source ' b:sessionfile
+    else
+      echo "No session loaded."
+    endif
+  endif
+endfunction
+
+au VimEnter * nested :call LoadSession()
+au VimLeave * :call UpdateSession()
+map <leader>m :call MakeSession()<CR>
+
+" Gtd
+let g:gtd#dir = '~/notes'
+
+" Reindent
+map <F7> mzgg=G`z

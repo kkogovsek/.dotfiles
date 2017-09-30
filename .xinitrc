@@ -20,3 +20,4 @@ setxkbmap -layout sl
 exec awesome
 wmname LG3D
 xset r rate 150 30
+feh --bg-scale /home/klemen/.config/wallpaper.png

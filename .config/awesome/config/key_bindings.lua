@@ -110,7 +110,14 @@ KeyBindings.init = function()
 	              {description = "lua execute prompt", group = "awesome"}),
 	    -- Menubar
 	    awful.key({ modkey }, "p", function() menubar.show() end,
-	              {description = "show the menubar", group = "launcher"})
+	              {description = "show the menubar", group = "launcher"}),
+      awful.key({ modkey, "Shift",  }, "F2",    function ()
+                        awful.prompt.run({ prompt = "Rename tab: ", text = awful.tag.selected().name, },
+                        awful.screen.focused().mypromptbox.widget,
+                        function (s)
+                            awful.tag.selected().name = s
+                        end)
+                end)
 	)
 
 	-- @DOC_CLIENT_KEYBINDINGS@
